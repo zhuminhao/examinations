@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var name="软件界面"
+			var user={}
+			function wel(){
+				var wellcome=prompt("你好，欢迎来到"+name+"，注册请输入1，登录请输入2")
+				if(wellcome==1){
+					register()
+				}else if(wellcome==2){
+				    login()
+				}else if(wellcome==null){
+					out()					
+				}else{
+					alert("请输入正确的选择数字")
+					arguments.callee(this)
+				}
+			}
+			function register(){
+				var zc=prompt("请输入注册帐号")
+				if(zc.length<5){
+					alert("注册帐号最少是5位数")
+					arguments.callee(this)
+				}
+				var mm=prompt("请输入密码")
+				if(mm.length<5){
+					alert("注册密码最少是5位数")
+					arguments.callee(this)
+				}
+				var mm2=prompt("请重新输入输入密码")
+				if(mm2!=mm){
+					alert("两次密码必须相等")
+					arguments.callee(this)
+				}
+				user[zc]=mm2
+				var cg=confirm("注册成功，是否要登录？")
+				if(cg==true){
+					login()
+				}else{
+					out()
+				}
+			}
+			function login(){
+				var zc=prompt("请输入登录帐号")
+				var mm=prompt("请输入登录密码")
+				if(user[zc]!=mm){
+					alert("请输入正确的帐号和密码")
+					arguments.callee(this)
+				}else{
+					alert("登录成功！")
+					console.log(user)
+					var win=window.open('考卷.html', '_self');
+					winTest();
+				}
+			}
+			function out(){
+				alert("欢迎下次使用！")
+			}
+			wel()
+		</script>
+	</body>
+</html>
